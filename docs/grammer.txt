@@ -1,0 +1,73 @@
+FunctionDecl = "func" FunctionName [ TypeParameters ] Signature [ FunctionBody ] .
+FunctionName = identifier .
+FunctionBody = Block .
+
+
+Block = "{" StatementList "}"
+StatementList = { Statement ";"
+
+Expression : UnaryExpr
+                  | Expression EQ_EQ Expression
+                  | Expression EQUAL Expression
+                  | Expression NOT_EQ Expression
+                  | Expression LT Expression
+                  | Expression GT Expression
+                  | Expression PLUS Expression
+                  | Expression MINUS Expression
+                  | Expression CARET Expression
+                  | Expression STAR Expression
+                  | Expression DIVIDE Expression
+
+UnaryExpr : PrimaryExpr
+                 | unary_op UnaryExpr
+
+unary_op : PLUS
+                | MINUS
+                | NOT
+                | CARET
+                | STAR
+    
+PrimaryExpr : Operand
+                   | IDENTIFIER
+
+Operand  : Literal
+                | LROUND Expression RROUND
+
+
+Block : LCURLY ScopeStart StatementList ScopeEnd RCURLY
+    
+ScopeStart : empty
+    
+ScopeEnd : empty
+
+ForStmt : for Expression Block
+              | for Block
+
+IfStmt = "if" [ SimpleStmt ";" ] Expression Block [ "else" ( IfStmt | Block ) ]
+
+IdentifierList = identifier { "," identifier } .
+ExpressionList = Expression { "," Expression } .
+
+ExpressionList : Expression COMMA ExpressionBotList
+    
+ExpressionBotList : Expression COMMA ExpressionBotList
+                         | Expression
+
+SwitchStmt : ExprSwitchStmt
+    
+ExprSwitchStmt : SWITCH SimpleStmt SEMICOLON LCURLY ScopeStart ExprCaseClauseList ScopeEnd RCURLY
+                      | SWITCH SimpleStmt SEMICOLON Expression LCURLY ScopeStart ExprCaseClauseList ScopeEnd RCURLY
+                      | SWITCH LCURLY ScopeStart ExprCaseClauseList ScopeEnd RCURLY
+                      | SWITCH Expression LCURLY ScopeStart ExprCaseClauseList ScopeEnd RCURLY
+
+ExprCaseClauseList : empty
+                          | ExprCaseClauseList ExprCaseClause
+    
+ExprCaseClause : ExprSwitchCase COLON StatementList
+    
+ExprSwitchCase : CASE ExpressionList
+                      | DEFAULT
+                      | CASE Expression
+
+VarDecl     = "var" ( VarSpec | "(" { VarSpec ";" } ")" ) .
+VarSpec     = IdentifierList ( Type [ "=" ExpressionList ] | "=" ExpressionList ) .

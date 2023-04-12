@@ -1,0 +1,35 @@
+data=''' if ( 5 > 4 ) {
+statement
+} else {
+statement
+}''';
+
+data=''' 5 + 6 / ( 7 ^ 7 ) && 50
+''';
+
+data=''' for 5 == 5 {
+for a > b {
+statement ;
+}
+}
+''';
+
+data='''switch statement ; {
+
+case 2=2 : statement
+case 3=4 : statement
+default : statement
+}''';
+
+data=''' var (
+hello string = " hey "
+sup int = 5
+
+)
+''';
+
+data='''if ( a > b ) {
+if (5 == 5) {
+statement
+}
+}'''

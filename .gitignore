@@ -1,0 +1,5 @@
+__pycache__/
+.vscode
+*.py[cod]
+parser.out
+logs/parselog.txt

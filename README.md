@@ -1,5 +1,5 @@
 # golang-mini-compiler
-A compiler front-end for Golang implemented using Python Lex and YACC (PLY) that handles the switch and loop constructs of Golang
+A compiler front-end for Golang implemented using Python Lex and YACC (PLY) that handles the switch, expression , variables ,for loop and if-else constructs of Golang
 
 ## Optimizations implemented:
 * Constant folding and constant propagation
@@ -15,7 +15,7 @@ A compiler front-end for Golang implemented using Python Lex and YACC (PLY) that
 Command to run till IC Optimization Step:
 
  ```
- export PATH=$PATH:/your-path-here/golang-mini-compiler
+ export PATH=$PATH:/your-path-here/Golang-Mini-Compiler
  go-compile <path-to-filename.go>
  ```
  

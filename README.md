@@ -1,4 +1,4 @@
-# golang-mini-compiler
+# Golang-mini-compiler
 A compiler front-end for Golang implemented using Python Lex and YACC (PLY) that handles the switch, expression , variables ,for loop and if-else constructs of Golang
 
 ## Optimizations implemented:
